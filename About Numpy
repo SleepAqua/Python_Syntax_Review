@@ -1,0 +1,37 @@
+# matrix是深度复制，mat是浅度复制
+# array相乘是元素相乘，mat相乘是矩阵相乘（但两者都可以用dot()进行矩阵相乘）
+# array不能加.H/.I求共轭/逆矩阵，mat可以（但两者都可以加.T求转置）
+# 矩阵库numpy.matlib包含一切numpy.array的函数（如zeros, ones, empty），不过返回的是matrix对象
+
+## Example of creating a n*m matrix whose all elements are all zeros:
+  # Python #
+import numpy as np
+import numpy.matlib as npmt
+
+
+def create_matrix_m1(n, m):
+    x = np.zeros((n, m))
+    return np.mat(x)
+
+
+def create_matrix_m2(n, m):
+    x = np.zeros((n, m))
+    return np.matrix(x)
+  
+    
+def create_matrix_m3(n, m):
+    x = npmt.zeros((n, m))
+    return x
+
+print(create_matrix_m1(5, 6))
+print(create_matrix_m2(5, 6))
+print(create_matrix_m3(5, 6))
+
+
+  # R #
+create_matrix <- function (n, m) {
+  x = rep(0, n*m)
+  return (matrix(x, ncol = n, nrow = m))
+}
+
+create_matrix(5, 6)
